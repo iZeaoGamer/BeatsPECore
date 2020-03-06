@@ -10,6 +10,7 @@ use pocketmine\event\player\PlayerItemConsumeEvent;
 use pocketmine\item\Item;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat as TF;
+use pocketmine\entity\EffectInstance;
 
 class Potions implements Listener{
 
