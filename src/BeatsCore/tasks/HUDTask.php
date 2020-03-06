@@ -33,7 +33,7 @@ class HUDTask extends Task{
 				$msg = "§6§lZector§bPE §cClassic §dOP Factions§r\n§b§lIGN: §c" . $player->getName() . "\n§b§lFaction: §c§l" . $isInFaction ? $faction : "No Faction" . "\n§b§lMoney: §c" . $money . " \n§b§lTPS: §c" . $tps . "\n§b§lLoad: §c" . $load . "\n§b§lCoordinates: §c" . $x . "§6/" . $y . "§6/" . $z;
 				$player->sendPopup($msg);
 				$event = new EventListener($this->plugin);
-				$reloadNameTag = $event->reloadNameTag($player);
+				$event->reloadNameTag($player);
 			}
 		}
     }
