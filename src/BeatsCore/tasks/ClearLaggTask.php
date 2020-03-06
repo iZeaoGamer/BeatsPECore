@@ -7,17 +7,17 @@ namespace BeatsCore\tasks;
 use BeatsCore\Core;
 use pocketmine\utils\TextFormat;
 use pocketmine\entity\Human;
-use pocketmine\scheduler\PluginTask;
+use pocketmine\scheduler\Task;
 use pocketmine\Server;
 
-class ClearLagTask extends PluginTask{
+class ClearLagTask extends Task{
 
     /** @var Core */
     private $plugin;
 
     public function __construct(Core $plugin){
         $this->plugin = $plugin;
-        parent::__construct($plugin);
+    
     }
 
     public function onRun(int $currentTick) : void{
