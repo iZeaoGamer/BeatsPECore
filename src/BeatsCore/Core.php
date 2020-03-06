@@ -170,14 +170,14 @@ class Core extends PluginBase{
     public function onEnable() : void{
         // COMMANDS \\
         $this->getServer()->getCommandMap()->registerAll("BeatsCore", [
-            new FlyCommand("fly", $this),
+      /*      new FlyCommand("fly", $this),
             new NickCommand("nick", $this),
-            new RulesCommand("rules", $this),
+            new RulesCommand("rules", $this),*/
             new CustomPotion("custompotion", $this),
-            new WildCommand("wild", $this),
+         /*   new WildCommand("wild", $this),
             new HUDCommand("hud", $this),
             new MaskCommand("mask", $this),
-            new HeadCommand("head", $this),
+            new HeadCommand("head", $this),*/
         ]);
         // CONFIGS \\
         @mkdir($this->getDataFolder());
@@ -195,12 +195,14 @@ class Core extends PluginBase{
         $this->getServer()->getPluginManager()->registerEvents(new AntiSwearing($this), $this);
         $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
         // TASKS \\
-        $this->getServer()->getScheduler()->scheduleRepeatingTask(new BroadcastTask($this), 2400);
+     //   $this->getServer()->getScheduler()->scheduleRepeatingTask(new BroadcastTask($this), 2400);
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new HUDTask($this), 20);
-        $this->getServer()->getScheduler()->scheduleRepeatingTask(new MaskTask($this), 20);
+     //   $this->getServer()->getScheduler()->scheduleRepeatingTask(new MaskTask($this), 20);
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new ClearLagTask($this), 20 * 60 * 5);
+}
+
         // Block overrides -- @CortexPE
-        BlockFactory::registerBlock(new class extends Bedrock {
+     /*   BlockFactory::registerBlock(new class extends Bedrock {
         	public function getBlastResistance(): float{
 				return 38;
 			}
