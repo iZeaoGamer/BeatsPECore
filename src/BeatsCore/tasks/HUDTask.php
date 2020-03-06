@@ -6,15 +6,14 @@ namespace BeatsCore\tasks;
 
 use BeatsCore\Core;
 use onebone\economyapi\EconomyAPI;
-use pocketmine\scheduler\PluginTask;
+use pocketmine\scheduler\Task;
 
-class HUDTask extends PluginTask{
+class HUDTask extends Task{
 
     /** @var Core */
     private $plugin;
 
     public function __construct(Core $plugin){
-        parent::__construct($plugin);
         $this->plugin = $plugin;
     }
 
@@ -23,10 +22,14 @@ class HUDTask extends PluginTask{
 			if(isset($this->plugin->hud[$player->getName()])){
 				$faction = $this->plugin->getServer()->getPluginManager()->getPlugin("FactionsPro")->getPlayerFaction($player->getName());
 				$money = EconomyAPI::getInstance()->myMoney($player);
+				$factionsPro = $this->plugin->getServer()->getPluginManager()->getPlugin("FactionsPro");
+				$isInFaction = $factionsPro->isInFaction();
 				$x = round($player->getX());
 				$y = round($player->getY());
 				$z = round($player->getZ());
-				$msg = "§l§dBeats§bPE §aFactions§r \n§3Faction: §b$faction §9Money: §5$money \n§eX: §6$x §l§8/ §r§eY: §6$y §l§8/ §r§eZ: §6$z";
+				$tps = $player->getServer()->getTicksPerSecond();
+				$load = $player->getServer()->getTickUsage();
+				$msg = "§6§lZector§bPE §cClassic §dOP Factions§r\n§b§lIGN: §c" . $player->getName() . "\n§b§lFaction: §c§l" . $isInFaction ? $faction : "No Faction" . "\n§b§lMoney: §c" . $money . " \n§b§lTPS: §c" . $tps . "\n§b§lLoad: §c" . $load . "\n§b§lCoordinates: §c" . $x . "§6/" . $y . "§6/" . $z;
 				$player->sendPopup($msg);
 			}
 		}
